@@ -35,7 +35,9 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Build debug APK
+      - name:       - name: Set JVM target to 17
+        run: |
+          sed -i '/compileOptions {/a\        sourceCompatibility JavaVersion.VERSION_17\n        targetCompatibility JavaVersion.VERSION_17' PoolOverlayStarter/app/build.gradle Build debug APK
         run: gradle -p PoolOverlayStarter assembleDebug
 
       - name: Upload APK
